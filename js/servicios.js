@@ -12,3 +12,9 @@ const p = document.querySelector("p.description");
 p.textContent = tratamiento.descripcion;
 const img = document.querySelector("img.service-image");
 img.src = tratamiento.imagen;
+//DESCRIPCION DE SERVICIO A AGENDAR
+const params = new URLSearchParams(window.location.search);
+const aggId = params.get("id");
+document.querySelector(".schedule-button").addEventListener("click", () => {
+  window.location.href = `agenda.html?id=${tratamiento.id}`;
+});

@@ -3,115 +3,148 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/tratamiento.js" defer></script>
 
-    <title>Document</title>
+    <title>Agenda tu turno!</title>
   </head>
-  <body></body>
-</html>
-<section
-  style="
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    background-color: #c5c8a9;
-  "
->
-  <div
-    style="
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      width: 100%;
-    "
-  >
-    <h2
+  <body>
+    <div style="text-align: center; margin-bottom: 2rem">
+      <h1
+        style="
+          font-family: 'Noto Serif Display', serif;
+          font-size: 2rem;
+          color: #4f6d7a;
+        "
+      >
+        Agendando para: <span id="nombre-tratamiento-seleccionado"></span>
+      </h1>
+      <p style="font-family: 'Quicksand', sans-serif; color: #6a6a6a">
+        Tipo: <span id="tipo-tratamiento-seleccionado"></span> | Precio:
+        <span id="precio-tratamiento-seleccionado"></span>
+      </p>
+    </div>
+    <section
       style="
-        font-family: 'Noto Serif Display', serif;
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+        background-color: #c5c8a9;
       "
     >
-      Agendá tu turno
-    </h2>
-
-    <form>
-      <label style="display: block; margin-bottom: 0.5rem"
-        >Nombre completo</label
-      >
-      <input
-        type="text"
-        required
+      <div
         style="
+          background-color: #fff;
+          padding: 2rem;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          max-width: 500px;
           width: 100%;
-          padding: 0.8rem;
-          margin-bottom: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-family: 'Quicksand', sans-serif;
-        "
-      />
-
-      <label style="display: block; margin-bottom: 0.5rem">Email</label>
-      <input
-        type="email"
-        required
-        style="
-          width: 100%;
-          padding: 0.8rem;
-          margin-bottom: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-family: 'Quicksand', sans-serif;
-        "
-      />
-
-      <label style="display: block; margin-bottom: 0.5rem">Fecha</label>
-      <input
-        type="date"
-        required
-        style="
-          width: 100%;
-          padding: 0.8rem;
-          margin-bottom: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-family: 'Quicksand', sans-serif;
-        "
-      />
-
-      <label style="display: block; margin-bottom: 0.5rem">Hora</label>
-      <input
-        type="time"
-        required
-        style="
-          width: 100%;
-          padding: 0.8rem;
-          margin-bottom: 1.5rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-family: 'Quicksand', sans-serif;
-        "
-      />
-
-      <button
-        type="submit"
-        style="
-          width: 100%;
-          background-color: #809671;
-          color: #fff;
-          padding: 0.9rem;
-          border: none;
-          border-radius: 8px;
-          font-family: 'Quicksand', sans-serif;
-          font-weight: bold;
-          font-size: 1rem;
-          cursor: pointer;
         "
       >
-        Confirmar turno
-      </button>
-    </form>
-  </div>
-</section>
+        <h2
+          style="
+            font-family: 'Noto Serif Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+          "
+        >
+          Agendá tu turno
+        </h2>
+
+        <form id="form-agenda">
+          <label
+            for="nombre-completo"
+            style="display: block; margin-bottom: 0.5rem"
+            >Nombre completo</label
+          >
+          <input
+            type="text"
+            id="nombre-completo"
+            required
+            style="
+              width: 100%;
+              padding: 0.8rem;
+              margin-bottom: 1rem;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+              font-family: 'Quicksand', sans-serif;
+            "
+          />
+
+          <label
+            for="email-usuario"
+            style="display: block; margin-bottom: 0.5rem"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email-usuario"
+            required
+            style="
+              width: 100%;
+              padding: 0.8rem;
+              margin-bottom: 1rem;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+              font-family: 'Quicksand', sans-serif;
+            "
+          />
+
+          <label for="fecha-turno" style="display: block; margin-bottom: 0.5rem"
+            >Fecha</label
+          >
+          <input
+            type="date"
+            id="fecha-turno"
+            required
+            style="
+              width: 100%;
+              padding: 0.8rem;
+              margin-bottom: 1rem;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+              font-family: 'Quicksand', sans-serif;
+            "
+          />
+
+          <label for="hora-turno" style="display: block; margin-bottom: 0.5rem"
+            >Hora</label
+          >
+          <input
+            type="time"
+            id="hora-turno"
+            required
+            style="
+              width: 100%;
+              padding: 0.8rem;
+              margin-bottom: 1.5rem;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+              font-family: 'Quicksand', sans-serif;
+            "
+          />
+
+          <button
+            type="submit"
+            id="confirmar-turno-btn"
+            style="
+              width: 100%;
+              background-color: #809671;
+              color: #fff;
+              padding: 0.9rem;
+              border: none;
+              border-radius: 8px;
+              font-family: 'Quicksand', sans-serif;
+              font-weight: bold;
+              font-size: 1rem;
+              cursor: pointer;
+            "
+          >
+            Confirmar turno
+          </button>
+        </form>
+      </div>
+    </section>
+    <script src="./js/agenda.js"></script>
+  </body>
+</html>
