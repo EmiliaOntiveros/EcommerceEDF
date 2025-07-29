@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/tratamiento.js" defer></script>
+    <script src="./js/servicios.js" defer></script>
+
+    <title>Detalle de Servicio - Agendar Turno</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Estilos CSS */
+      body {
+        font-family: "Quicksand", sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #b3b792; /* Color de fondo */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la ventana */
+        box-sizing: border-box;
+      }
+
+      .service-card {
+        /* Renombrado de product-card a service-card */
+        display: flex;
+        flex-direction: column; /* Por defecto en columnas para móviles */
+        background-color: #f0f0f0; /* Un color claro para la tarjeta para que el texto negro contraste */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 900px; /* Ancho máximo de la tarjeta */
+        width: 100%;
+        overflow: hidden; /* Para que las esquinas redondeadas se apliquen bien a la imagen */
+      }
+
+      .service-image-container {
+        /* Renombrado */
+        flex: 1; /* Ocupa el espacio disponible */
+        min-width: 300px; /* Ancho mínimo para la imagen en pantallas grandes */
+      }
+
+      .service-image {
+        /* Renombrado */
+        width: 100%;
+        height: auto;
+        display: block; /* Elimina espacio extra debajo de la imagen */
+        object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+      }
+
+      .service-details {
+        /* Renombrado */
+        flex: 1; /* Ocupa el espacio disponible */
+        padding: 20px;
+        color: black; /* Color de las letras */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .service-details h1 {
+        font-size: 2em;
+        margin-bottom: 5px;
+        color: black; /* Color de las letras */
+      }
+
+      .service-details h2 {
+        font-size: 1.5em;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: black; /* Color de las letras */
+      }
+
+      .service-details .price {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: black; /* Color de las letras */
+      }
+
+      .service-details .description {
+        font-size: 0.9em;
+        line-height: 1.6;
+        margin-bottom: 25px; /* Ajustado el margen inferior */
+        color: black; /* Color de las letras */
+      }
+
+      /* Eliminado el estilo .quantity-control y sus elementos */
+
+      .schedule-button {
+        /* Renombrado y modificado */
+        background-color: #b3b792; /* Color de detalle para el botón */
+        color: black; /* Color de las letras del botón */
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: "Quicksand", sans-serif;
+        text-align: center; /* Centrar el texto del botón */
+        width: fit-content; /* El botón se ajusta a su contenido */
+        align-self: flex-start; /* Alinea el botón a la izquierda dentro del flex column */
+      }
+
+      .schedule-button:hover {
+        background-color: #9aa07e; /* Un tono ligeramente más oscuro para el hover */
+      }
+
+      /* Media Queries para pantallas más grandes (diseño de escritorio) */
+      @media (min-width: 768px) {
+        .service-card {
+          /* Renombrado */
+          flex-direction: row; /* En fila para pantallas grandes */
+        }
+        .service-image-container {
+          /* Renombrado */
+          border-top-right-radius: 0;
+          border-bottom-left-radius: 8px;
+        }
+        .schedule-button {
+          align-self: flex-start; /* Asegura que el botón se alinee a la izquierda */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="service-card">
+      <div class="service-image-container">
+        <img
+          src="https://atlas-fisioterapia.es/wp-content/uploads/2021/01/ammma-estettica-piroche-2.jpg"
+          alt="Imagen del Servicio"
+          class="service-image"
+        />
+      </div>
+      <div class="service-details">
+        <h1>Tipo de Servicio</h1>
+        <h2>Nombre del Servicio</h2>
+        <div class="price">$50.000</div>
+        <p class="description">
+          Aquí puedes poner una descripción detallada de este servicio, sus
+          beneficios, duración, preparación necesaria o cualquier otra
+          información relevante para el cliente.
+        </p>
+        <button class="schedule-button">Agendar un turno</button>
+      </div>
+    </div>
+  </body>
+</html>

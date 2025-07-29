@@ -1,111 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agenda de turnos - "El don-de fluir multiespacio"</title>
+    <script src="./js/tratamiento.js" defer></script>
+    <script src="./js/index.js" defer></script>
+    <title>El Don-De Fluir</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
       rel="stylesheet"
     />
     <style>
+      /* Estilos CSS */
       body {
         font-family: "Quicksand", sans-serif;
         margin: 0;
-        background-color: #b3b792;
-        color: #725c3a;
+        padding: 0;
+        background-color: #f0f0f0; /* Un gris muy claro para el fondo general si quieres un poco de contraste con la tarjeta principal */
+        color: black; /* Color de texto por defecto */
+        box-sizing: border-box;
       }
-      header {
-        background-color: #e5e0d8;
-        padding: 1rem;
+
+      .header {
+        background-color: #333; /* Un gris oscuro para el header, similar a la imagen */
+        color: white; /* Letras blancas para el header */
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header-left h1 {
+        margin: 0;
+        font-size: 1.5em;
+        color: white; /* Letras blancas para el título del header */
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Espacio entre los íconos/texto */
+        color: white; /* Letras blancas para el "Creado por..." */
+      }
+
+      .header-right a {
+        color: white; /* Color de los enlaces en el header */
+        text-decoration: none;
+        font-size: 1.1em;
+        transition: color 0.3s ease;
+      }
+
+      .header-right a:hover {
+        color: #b3b792; /* Color de detalle al pasar el mouse */
+      }
+
+      /* Iconos de prueba (puedes reemplazarlos con SVG o FontAwesome) */
+      .header-right .icon {
+        font-size: 1.5em;
+      }
+
+      .main-container {
+        background-color: #b3b792; /* El color de fondo principal que pediste */
+        padding: 40px 20px;
         text-align: center;
       }
-      .semana-selector {
+
+      .main-container h2 {
+        font-size: 2.2em;
+        margin-bottom: 40px;
+        color: black; /* Texto negro */
+      }
+
+      .service-list {
         display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin: 1rem 0;
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+        justify-content: center; /* Centra los elementos horizontalmente */
+        gap: 25px; /* Espacio entre las tarjetas de servicio */
+        max-width: 1200px; /* Ancho máximo para el contenedor de la lista */
+        margin: 0 auto; /* Centrar la lista de servicios */
       }
-      .semana-selector input[type="date"] {
-        padding: 0.5rem;
-        border: 1px solid #725c3a;
-        border-radius: 6px;
-        background-color: #e5e0d8;
-        color: #725c3a;
-      }
-      .calendario-semana {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        gap: 1px;
-        background-color: #725c3a;
-        margin: 0 1rem;
-      }
-      .dia {
-        background-color: #e5e0d8;
-        min-height: 120px;
-        padding: 10px;
-      }
-      .dia h3 {
-        margin: 0 0 10px;
-        font-size: 1rem;
-      }
-      .evento {
-        background-color: #b3b792;
-        padding: 6px;
-        margin: 5px 0;
-        border-radius: 5px;
-        font-size: 0.9rem;
-        border: 1px solid #725c3a;
-      }
-      .categorias {
-        display: flex;
-        justify-content: space-around;
-        margin: 2rem 1rem;
-        gap: 1rem;
-      }
-      .categoria {
-        background-color: #e5e0d8;
-        padding: 1rem;
-        flex: 1;
-        text-align: center;
+
+      .service-card {
+        background-color: white; /* Fondo blanco para las tarjetas */
         border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 100%; /* Ancho completo por defecto para móviles */
+        max-width: 250px; /* Ancho máximo para cada tarjeta */
+        display: flex;
+        flex-direction: column;
+        text-align: left; /* Alineación del texto dentro de la tarjeta */
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 150px; /* Altura fija para las imágenes */
+        object-fit: cover; /* Asegura que la imagen cubra el área */
+        display: block;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .service-info {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* Permite que el contenido crezca y empuje el botón hacia abajo */
+      }
+
+      .service-info h3 {
+        font-size: 1.2em;
+        margin: 0 0 5px 0;
+        color: black; /* Texto negro */
+      }
+
+      .service-info p {
+        font-size: 0.9em;
+        margin: 0 0 10px 0;
+        color: black; /* Texto negro */
+      }
+
+      .service-info .price {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: black; /* Texto negro */
+      }
+
+      .view-more-button {
+        background-color: #b3b792; /* Color de detalle para el botón */
+        color: black; /* Texto del botón negro */
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 0.9em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: "Quicksand", sans-serif;
+        text-align: center;
+        width: 100%; /* Ocupa todo el ancho de la tarjeta */
+        margin-top: auto; /* Empuja el botón hacia la parte inferior */
+      }
+
+      .view-more-button:hover {
+        background-color: #9aa07e; /* Tono más oscuro al pasar el mouse */
+      }
+
+      /* Media Query para pantallas medianas y grandes */
+      @media (min-width: 768px) {
+        .service-list {
+          justify-content: space-around; /* Distribuye los elementos con espacio entre ellos */
+        }
+        .service-card {
+          width: calc(33.333% - 25px); /* 3 columnas */
+        }
+      }
+
+      /* Media Query para pantallas muy grandes */
+      @media (min-width: 1024px) {
+        .service-card {
+          width: calc(20% - 25px); /* 5 columnas, como en tu imagen */
+        }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Turnos</h1>
-      <p>Reserva tu cita o clase semanalmente</p>
+    <header class="header">
+      <div class="header-left">
+        <h1>El don-de fluir</h1>
+      </div>
+      <div class="header-right">
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><span class="icon">&#x1F30E;</span></a
+        >
+        <a href="#" target="_blank" rel="noopener noreferrer"
+          ><span class="icon">&#x1F4BB;</span></a
+        >
+        <span>Creado por </span>
+      </div>
     </header>
-    <h2>
-      Este proyecto es un ecommerce para sacar turnos y realizar cotizaciones
-      para un multiespacio que tiene actividades como estética, entrenamiento y
-      danza.
-    </h2>
-    <div class="semana-selector">
-      <label>Ver semana de: <input type="date" id="fecha-semana" /></label>
-    </div>
 
-    <div class="calendario-semana" id="calendario">
-      <!-- Días se generan con JavaScript -->
-    </div>
-
-    <div class="categorias">
-      <div class="categoria">
-        <h2>Estética</h2>
-        <p>Masajes, faciales, uñas y más.</p>
-      </div>
-      <div class="categoria">
-        <h2>Entrenamientos personalizados</h2>
-        <p>Funcional, pilates, postural.</p>
-      </div>
-      <div class="categoria">
-        <h2>Danza</h2>
-        <p>Clases de ritmos y expresión corporal.</p>
-      </div>
-    </div>
-
-    <script src="js/main.js"></script>
+    <main class="main-container">
+      <h2>Agenda tu turno</h2>
+      <div class="service-list ttratamiento"></div>
+    </main>
   </body>
 </html>

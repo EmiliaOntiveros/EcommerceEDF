@@ -8,7 +8,9 @@ function agenda(usuario) {
     5. Viernes
     6. Sábado
     7. Domingo`);
-  switch (day) {
+  switch (
+    day //revisar!!!!
+  ) {
     case "1":
       alert(`Gracias por tu reserva, ${usuario}!`);
       break;
