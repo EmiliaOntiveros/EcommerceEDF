@@ -48,7 +48,7 @@ Estética prolija, ligera y sofisticada en cada detalle.`,
     tipo: "corporal",
     precio: 25_000,
     imagen:
-      "https://fisioterapiasantutxu.es/wp-content/uploads/2018/02/fisioterapia-empresa-bilbao-santutxu.jpg",
+      "https://vitalitydaycusco.com/wp-content/uploads/2020/07/Masajes-descontracturantes-Valencia.jpg",
     descripcion: `Técnica manual enfocada en aliviar tensiones musculares profundas causadas por estrés, malas posturas o esfuerzo físico.
 Desbloquea zonas rígidas, mejora la movilidad y genera una sensación inmediata de bienestar integral.
 Ideal para reconectar con tu cuerpo desde la calma.`,

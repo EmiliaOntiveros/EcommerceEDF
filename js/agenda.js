@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const formAgenda = document.getElementById("form-agenda");
   const inputNombre = document.getElementById("nombre-completo");
   const inputEmail = document.getElementById("email-usuario");
+  const inputTelefono = document.getElementById("telefono-usuario");
   const inputFecha = document.getElementById("fecha-turno");
-  const inputHora = document.getElementById("hora-turno");
   function guardarTurno(turno) {
     //LOCALSTORAGE - JSON PARSE
     let turnosAgendados =
@@ -29,15 +29,43 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const turno = {
+      //turnO pertenece a array de objetos
       nombre: inputNombre.value,
       email: inputEmail.value,
+      telefono: inputTelefono.value,
       fecha: inputFecha.value,
-      hora: inputHora.value,
       tratamientoId: tratamientoId,
     };
 
     guardarTurno(turno);
-    //alert("Turno agendado exitosamente!");     NO ALERTS, POR ESO COMENTADO XD
-    formAgenda.reset();
+
+    const turnos = () =>
+      //turnoS pertenece a fetch
+      fetch(`https://68a68c00639c6a54e99f05ea.mockapi.io/turnos`, {
+        method: "post", //crear turno
+        headers: {
+          "Content-Type": "application/json", //se manda por json
+        },
+        body: JSON.stringify(turno),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          formAgenda.reset();
+          Swal.fire({
+            icon: "success",
+            title: "¡Tu turno ha sido confirmado!",
+            text: `Turno #${data.id} registrado correctamente.`,
+            timer: 2500,
+            showConfirmButton: false,
+          });
+        })
+        .catch((error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "No se pudo guardar el turno. Intenta nuevamente.",
+          });
+        });
+    turnos();
   });
 });
